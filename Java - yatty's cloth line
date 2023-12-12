@@ -1,0 +1,113 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    function loadCartPage() {
+        fetchPageContent('cart.html');
+        openShoppingCartModal();
+    }
+
+    function loadCheckoutPage() {
+        fetchPageContent('checkout.html');
+        openShoppingCartModal();
+    }
+
+    function loadPage(page) {
+        history.pushState(null, null, page);
+        fetchPageContent(page);
+    }
+
+    function fetchPageContent(page) {
+        fetch(page)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('content-container').innerHTML = html;
+                showSection(page.substring(0, page.indexOf('.html')));
+            })
+            .catch(error => console.error('Error fetching page:', error));
+    }
+
+    var exploreButtons = document.querySelectorAll('.explore-button');
+    exploreButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            var sectionId = button.getAttribute('href').substring(1);
+            loadPage(sectionId + '.html');
+        });
+    });
+
+    var closeModalButton = document.getElementById('closeModalButton');
+    closeModalButton.addEventListener('click', function () {
+        closeShoppingCartModal();
+        cartIcon.focus();
+    });
+
+    var cartLink = document.querySelector('a[href="cart.html"]');
+    cartLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        loadCartPage();
+    });
+
+    var checkoutLink = document.querySelector('a[href="checkout.html"]');
+    checkoutLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        loadCheckoutPage();
+    });
+
+    var productItems = document.querySelectorAll('.clothing-item');
+    productItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            var productName = item.querySelector('h2').textContent;
+            var price = item.querySelector('p').textContent;
+            openSizeModal(productName, price);
+        });
+    });
+
+    function openSizeModal(productName, productPrice) {
+        var sizeModal = document.getElementById('sizeModal');
+        sizeModal.style.display = 'block';
+
+        
+        document.getElementById('productName').textContent = productName;
+        document.getElementById('productPrice').textContent = productPrice;
+
+           var addToCartButton = document.getElementById('addToCartButton');
+    addToCartButton.addEventListener('click', function () {
+        var sizeInput = document.getElementById('sizeInput').value;
+        if (sizeInput) {
+            var productName = document.getElementById('productName').textContent;
+            var price = document.getElementById('productPrice').textContent;
+            addToCart(productName, price, sizeInput);
+            closeSizeModal();
+        }
+    });
+
+    function addToCart(productName, price, size) {
+        if (size) {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ productName, size, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            updateCartCount();
+            console.log(`Added to cart: ${productName}, Size: ${size}, Price: ${price}`);
+        }
+    }
+
+    function updateCartCount() {
+        var cartCountElement = document.querySelector('.cart-count');
+        cartCountElement.textContent = (parseInt(cartCountElement.textContent) || 0) + 1;
+    }
+
+    var cartIcon = document.getElementById('cartIcon');
+    cartIcon.addEventListener('click', function (event) {
+        event.preventDefault();
+        openShoppingCartModal();
+    });
+
+    var closeModalButton = document.getElementById('closeModalButton');
+    closeModalButton.addEventListener('click', function () {
+        closeShoppingCartModal();
+        cartIcon.focus();
+    });
+
+    lazyLoad();
+});
+</script>

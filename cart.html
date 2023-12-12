@@ -1,0 +1,60 @@
+<!-- cart.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="CSS - Yatty's CLoth line.css">
+    <script src="Java - yatty's cloth line.js"></script>
+    <title>Yatty's Clothing - Cart</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Yatty's Clothing Line</h1>
+        <a href="#" class="cart-icon" id="cartIcon" aria-label="Shopping Cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" aria-hidden="true">0</span>
+        </a>
+    </header>
+
+    <nav>
+        <a href="home.html"><i class="fas fa-home"></i> Home</a>
+        <a href="product.html"><i class="fas fa-shopping-bag"></i> Products</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a href="checkout.html"><i class="fas fa-credit-card"></i> Checkout</a>
+
+        <!-- Add an accessible link or button for the shopping cart -->
+<a href="#" class="cart-icon" id="cartIcon" aria-label="Shopping Cart" role="button">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count" aria-hidden="true">0</span>
+</a>
+
+<!-- Add an accessible modal container with appropriate ARIA attributes -->
+<div id="shoppingCartModal" role="dialog" aria-labelledby="shoppingCartLabel" aria-modal="true">
+    <!-- Your shopping cart content goes here -->
+    <button id="closeModalButton" aria-label="Close" role="button">&times;</button>
+    <div id="cartContent"></div>
+</div>
+
+    </nav>
+
+    <main>
+       
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Yatty's Clothing Line. All rights reserved.</p>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/joel.valdez.90475069?mibextid=JRoKGi" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://instagram.com/yatty_onlyfans?igshid=NGVhN2U2NjQ0Yg%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>
