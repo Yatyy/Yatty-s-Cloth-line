@@ -1,58 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="CSS - Yatty's CLoth line.css">
-    <script src="Java - yatty's cloth line.js"></script>
-    <title>Yatty's Clothing - Cart</title>
+    <title>Shopping Cart</title>
 </head>
-
 <body>
+    <div id="cart">
+        <!-- Your cart items go here -->
+        <div class="cart-item" data-id="1" data-name="Product 1" data-price="19.99">Product 1 - $19.99</div>
+        <div class="cart-item" data-id="2" data-name="Product 2" data-price="29.99">Product 2 - $29.99</div>
+    </div>
 
-    <header>
-        <h1>Yatty's Clothing Line</h1>
-        <a href="#" class="cart-icon" id="cartIcon" aria-label="Shopping Cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count" aria-hidden="true">0</span>
-        </a>
-    </header>
+    <button id="checkoutBtn" onclick="checkout()">Proceed to Checkout</button>
 
-    <nav>
-        <a href="home.html"><i class="fas fa-home"></i> Home</a>
-        <a href="product.html"><i class="fas fa-shopping-bag"></i> Products</a>
-        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
-        <a href="checkout.html"><i class="fas fa-credit-card"></i> Checkout</a>
+    <script>
+        // This script assumes you have a variable to store the cart items.
+        let cartItems = [];
 
-        <!-- Add an accessible link or button for the shopping cart -->
-<a href="#" class="cart-icon" id="cartIcon" aria-label="Shopping Cart" role="button">
-    <i class="fas fa-shopping-cart"></i>
-    <span class="cart-count" aria-hidden="true">0</span>
-</a>
+        // Function to add items to the cart
+        function addToCart(id, name, price) {
+            cartItems.push({ id, name, price });
+            updateCartDisplay();
+        }
 
-<!-- Add an accessible modal container with appropriate ARIA attributes -->
-<div id="shoppingCartModal" role="dialog" aria-labelledby="shoppingCartLabel" aria-modal="true">
-    <!-- Your shopping cart content goes here -->
-    <button id="closeModalButton" aria-label="Close" role="button">&times;</button>
-    <div id="cartContent"></div>
-</div>
+        // Function to update the cart display
+        function updateCartDisplay() {
+            const cartElement = document.getElementById('cart');
+            cartElement.innerHTML = '';
 
-    </nav>
+            cartItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.textContent = `${item.name} - $${item.price}`;
+                cartElement.appendChild(itemElement);
+            });
+        }
 
-    <main>
-       
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Yatty's Clothing Line. All rights reserved.</p>
-        <ul class="social-icons">
-            <li><a href="https://www.facebook.com/joel.valdez.90475069?mibextid=JRoKGi" target="_blank"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="https://instagram.com/yatty_onlyfans?igshid=NGVhN2U2NjQ0Yg%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-    </footer>
+        // Function to proceed to checkout
+        function checkout() {
+            // Here, you can implement logic to send the cart data to your server
+            // and handle the checkout process, e.g., redirecting to a checkout page.
+            // For the sake of this example, we'll just log the cart items to the console.
+            console.log('Checkout:', cartItems);
+            alert('Proceeding to checkout. Check console for details.');
+        }
+    </script>
 </body>
-
 </html>
