@@ -135,7 +135,6 @@
         }
 
         function updateCartDisplay() {
-            // Update cart items in the main section
             const cartItemsContainer = document.getElementById('cartItems');
             cartItemsContainer.innerHTML = '';
 
@@ -201,12 +200,11 @@
             const paymentMode = document.getElementById('paymentMode').value;
             const paymentDetailsContainer = document.getElementById('paymentDetailsContainer');
 
-            // Clear previous payment details
+           
             paymentDetailsContainer.innerHTML = '';
 
-            // Add new payment details based on the selected payment mode
+           
             if (paymentMode === 'creditCard') {
-                // Add credit card details fields
                 paymentDetailsContainer.innerHTML = `
                     <label for="creditCardNumber">Credit Card Number:</label>
                     <input type="text" id="creditCardNumber" name="creditCardNumber" required>
@@ -219,7 +217,6 @@
                     <div></div>
                 `;
             } else if (paymentMode === 'debitCard') {
-                // Add debit card details fields
                 paymentDetailsContainer.innerHTML = `
                     <label for="debitCardNumber">Debit Card Number:</label>
                     <input type="text" id="debitCardNumber" name="debitCardNumber" required>
@@ -232,7 +229,6 @@
                     <div></div>
                 `;
             } else if (paymentMode === 'paypal') {
-                // Add PayPal details fields
                 paymentDetailsContainer.innerHTML = `
                     <label for="paypalEmail">PayPal Email:</label>
                     <input type="email" id="paypalEmail" name="paypalEmail" required>
