@@ -181,6 +181,25 @@
             var checkoutDetails = document.getElementById('checkoutDetails');
             checkoutDetails.style.display = 'none';
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    updateCartDisplay();
+});
+
+function addToCart(name, price) {
+    cartItems.push({ name, price });
+    updateCartDisplay();
+    saveCartToLocalStorage();
+}
+
+function updateCartDisplay() {
+ 
+    saveCartToLocalStorage();
+}
+
+function saveCartToLocalStorage() {
+    localStorage.setItem('cartItems', JSON.stringify(cartItem
     </script>
 </body>
 
