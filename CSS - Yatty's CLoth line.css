@@ -107,7 +107,8 @@ footer p {
 
 #about,
 #contact,
-#products {
+#products,
+#cart{
     padding: 20px;
     text-align: center;
     background-image: url(https://twooctobers.com/wp-content/uploads/2018/06/Clothing-Retailer-Store.jpg);
