@@ -109,12 +109,11 @@
             <li><a href="https://instagram.com/yatty_onlyfans?igshid=NGVhN2U2NjQ0Yg%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a></li>
         </ul>
     </footer>
-
-    <div id="shoppingCart">
+ <div id="shoppingCart">
         <h2>Your Shopping Cart</h2>
         <ul id="cartItems"></ul>
         <button onclick="closeShoppingCart()">Close</button>
-        <buttom onclick="checkout()">Checkout</button>
+        <button onclick="checkout()">Checkout</button>
     </div>
 
     <script>
@@ -160,6 +159,11 @@
         function closeShoppingCart() {
             var shoppingCart = document.getElementById('shoppingCart');
             shoppingCart.style.display = 'none';
+        }
+
+        function checkout() {
+            // Implement your checkout logic here
+            alert('Proceeding to checkout. Implement your checkout logic.');
         }
 
         var cartIcon = document.getElementById('cartIcon');
