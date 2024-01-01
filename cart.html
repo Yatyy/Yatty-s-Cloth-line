@@ -90,6 +90,10 @@
             <input type="text" id="customerAddress" name="customerAddress" required>
             <div></div>
 
+            <label for="emailAddress">Email:</label>
+            <input type="text" id="emailAddress" name="emailAddress" required>
+            <div></div>
+            
             <label for="paymentMode">Payment Mode:</label>
             <select id="paymentMode" name="paymentMode" required>
                 <option value="creditCard">Credit Card</option>
@@ -126,14 +130,28 @@
         }
 
         function updateCartDisplay() {
-            const cartItemsContainer = document.getElementById('cartItemsCheckout');
-            cartItemsContainer.innerHTML = '';
+    // Update cart items in the main section
+    const cartItemsContainer = document.getElementById('cartItems');
+    cartItemsContainer.innerHTML = '';
 
-            cartItems.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.textContent = `${item.name} - $${item.price}`;
-                cartItemsContainer.appendChild(itemElement);
-            });
+    cartItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.textContent = `${item.name} - $${item.price}`;
+        cartItemsContainer.appendChild(itemElement);
+    });
+
+    // Update cart items in the checkout section
+    const cartItemsCheckoutContainer = document.getElementById('cartItemsCheckout');
+    cartItemsCheckoutContainer.innerHTML = '';
+
+    cartItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.textContent = `${item.name} - $${item.price}`;
+        cartItemsCheckoutContainer.appendChild(itemElement);
+    });
+
+    updateCartCount();
+}
 
             updateCartCount();
         }
@@ -148,6 +166,7 @@
 
             const customerName = document.getElementById('customerName').value;
             const customerAddress = document.getElementById('customerAddress').value;
+             const emailAddress = document.getElementById('emailAddress').value;
             const paymentMode = document.getElementById('paymentMode').value;
 
             alert('Order Successfully Placed');
