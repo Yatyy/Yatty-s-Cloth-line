@@ -140,7 +140,7 @@
 
             cartItems.forEach(item => {
                 const itemElement = document.createElement('div');
-                itemElement.textContent = `${item.name} - $${item.price}`;
+                itemElement.textContent = `₱{Carhartt Tshirt Dark Navy/Gold:} - ₱{599.99}`;
                 cartItemsContainer.appendChild(itemElement);
             });
 
@@ -149,7 +149,7 @@
 
             cartItems.forEach(item => {
                 const itemElement = document.createElement('div');
-                itemElement.textContent = `${item.name} - $${item.price}`;
+                itemElement.textContent = `₱{Carhartt Tshirt Dark Navy/Gold:} - ₱{599.99}`;
                 cartItemsCheckoutContainer.appendChild(itemElement);
             });
 
@@ -173,7 +173,7 @@
 
             cartItems = [];
             updateCartDisplay();
-            updateCartCount(); // Reset the cart count to 0
+            updateCartCount();
         }
 
         function openCheckout() {
