@@ -3,28 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS - Yatty's CLoth line.css">
+    <script src="Java - yatty's cloth line.js"></script>
+    <title>Yatty's Clothing Line - Cart</title>
 </head>
 <body>
-    <div id="cart">
-        <!-- Your cart items go here -->
-        <div class="cart-item" data-id="1" data-name="Product 1" data-price="19.99">Product 1 - $19.99</div>
-        <div class="cart-item" data-id="2" data-name="Product 2" data-price="29.99">Product 2 - $29.99</div>
-    </div>
+
+    <header>
+        <h1>Yatty's Clothing Line</h1>
+        <a href="#" class="cart-icon" id="cartIcon" aria-label="Shopping Cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" aria-hidden="true">0</span>
+        </a>
+    </header>
+    <nav>
+        <a href="home.html"><i class="fas fa-home"></i> Home</a>
+        <a href="product.html"><i class="fas fa-shopping-bag"></i> Products</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+
+    <main>
+        <div class="clothing-item clickable" onclick="showSizePrompt('Regatta Polo-Tshirt Classic 65/35 Short Sleeve', '₱499.99')">
+            <img src="https://media.secretsales.com/catalog/product/cache/54f1c1f101255c565d668037bb6945b7/m/e/mega-lutrg1922-9.jpg" alt="Clothing Item 1">
+            <h2>Regatta Polo-Tshirt Classic 65/35 Short Sleeve</h2>
+            <p>₱499.99</p>
+        </div>
+        
+        <div class="clothing-item clickable" onclick="showSizePrompt('Carhartt Tshirt Dark Navy/Gold', '₱599.99')">
+            <img src="https://www.thesportinglodge.co.uk/wp-content/uploads/2020/08/Carhartt-Chase-T-Shirt-Dark-Navy-Gold-1-1.jpg" alt="Clothing Item 2">
+            <h2>Carhartt Tshirt Dark Navy/Gold </h2>
+            <p>₱599.99</p>
+        </div>
+
+         <div class="clothing-item" onclick="showSizePrompt('Quarter Zipper Ralph Lauren Navy Blue', '₱699.99')">
+            <img src="https://clothbase.s3.amazonaws.com/uploads/b408ecd2-1f5a-40cf-b135-48c4fcd5cda4/15-03-2022_EC_710849720003_1_1.jpg" alt="Clothing Item 3">
+            <h2>Quarter Zipper Ralph Lauren Navy Blue</h2>
+            <p>₱699.99</p>
+        </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Gucci GG Stretch Cotton Polo', '₱1799.99')">
+            <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1659720662/598956_XJB0U_4115_001_100_0000_Light-GG-stretch-cotton-polo.jpg" alt="Clothing Item 4">
+            <h2>Gucci GG Stretch Cotton Polo</h2>
+            <p>₱1799.99</p>
+        </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Ferrari Puma T-shirt', '₱599.99')">
+            <img src="https://i5.walmartimages.com/asr/0e328605-7c75-4284-a4ea-f368e0b701f1_3.418e7d84c8e4c2914523a30c5c2aefe9.jpeg" alt="Clothing Item 5">
+             <h2>Ferrari Puma T-shirt T7</h2>
+              <p >₱599.99</p>
+            </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Nike Drifit Running T-shirt Black', '₱599.99')">
+            <img src="https://cdnc.lystit.com/photos/165f-2014/05/06/nike-black-dri-fit-running-t-shirt-product-1-19729431-1-621861010-normal.jpeg" alt="Clothing Item 6">
+            <h2>Nike Drifit Running T-shirt Black</h2>
+            <p>₱599.99</p>
+        </div>
+        
+        <div class="clothing-item" onclick="showSizePrompt('Louis Vuitton Winter Jacket', '₱1699.99')">
+            <img src="http://cdn.theluxurycloset.com/uploads/products/full/9d3536af1b8019b519811e1c5a64af961454765834.9441.jpg" alt="Clothing Item 7">
+            <h2>Louis Vuitton Winter Jacket</h2>
+                        <p>₱1699.99</p>
+        </div>
+
+       <div class="clothing-item" onclick="showSizePrompt('La coste white polo-tshirt', '₱1299.99')">
+            <img src="https://www.theshirtstore.co.uk/images/lacoste-white-mens-polo-t-shirt-p1026-14095_image.jpg" alt="Clothing Item 8">
+            <h2>La coste white polo-tshirt</h2>
+            <p>₱1299.99</p>
+        </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Tommy Hilfiger Denim Tommy Jeans Limited Edition T-shirt in Black Iris', '₱699.99')">
+            <img src="https://cdna.lystit.com/photos/amazon-prime/51b6e089/tommy-hilfiger-Black-Iris-Flag-Patch-Crewneck-Sweatshirt.jpeg" alt="Clothing Item 9">
+            <h2>Tommy Hilfiger Denim Tommy Jeans Limited Edition T-shirt in Black Iris</h2>
+            <p>₱699.99</p>
+        </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Under Armour T-shirt UA Heat Gear Tech Sports', '₱599.99')">
+            <img src="https://www.asmc.fr/media/image/4b/ac/c0/12757-0.jpg" alt="Clothing Item 10">
+            <h2>Under Armour T-shirt UA HeatGear Tech sports</h2>
+            <p>₱599.99</p>
+        </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Adidas Casual Original Trefoil California Crew neck', '₱499.99')">
+            <img src="https://s3-eu-west-1.amazonaws.com/images.linnlive.com/fd6c4c1fc0c305a6e41fb6c823555ada/5d346dca-8d36-4cdd-87ec-60cc612b329e.jpg" alt="Clothing Item 11">
+             <h2>Adidas Casual Original Trefoil California Crew neck</h2>
+              <p >₱499.99</p>
+            </div>
+
+        <div class="clothing-item" onclick="showSizePrompt('Adidas AFA Argentina Away Jersey Black/Classic', '₱999.99')">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.Pfw0ml2gr3DB4dKEBMjJKQHaHa&pid=Api&P=0&h=180.jpg" alt="Clothing Item 12">
+            <h2>Adidas AFA Argentina Away Jersey Black/Classic</h2>
+            <h2>LIMITED TIME ONLY!</h2>
+            <p>₱999.99</p>
+        </div>
+        
+
+    </main>
 
     <button id="checkoutBtn" onclick="checkout()">Proceed to Checkout</button>
 
     <script>
-        // This script assumes you have a variable to store the cart items.
+       
         let cartItems = [];
 
-        // Function to add items to the cart
+      
         function addToCart(id, name, price) {
             cartItems.push({ id, name, price });
             updateCartDisplay();
         }
 
-        // Function to update the cart display
+        
         function updateCartDisplay() {
             const cartElement = document.getElementById('cart');
             cartElement.innerHTML = '';
@@ -36,14 +125,12 @@
             });
         }
 
-        // Function to proceed to checkout
+       
         function checkout() {
-            // Here, you can implement logic to send the cart data to your server
-            // and handle the checkout process, e.g., redirecting to a checkout page.
-            // For the sake of this example, we'll just log the cart items to the console.
             console.log('Checkout:', cartItems);
             alert('Proceeding to checkout. Check console for details.');
         }
     </script>
 </body>
 </html>
+
