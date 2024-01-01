@@ -149,26 +149,14 @@ footer {
             const customerAddress = document.getElementById('customerAddress').value;
             const paymentMode = document.getElementById('paymentMode').value;
 
-            alert('Thank you');
+            alert('Order Processed');
 
             cartItems = [];
             updateCartDisplay();
         }
 
-       
-function updateCartDisplay() {
-    const cartItemsContainer = document.getElementById('cartItems');
-    cartItemsContainer.innerHTML = '';
-
-    cartItems.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.innerHTML = `<span>${item.name}</span> - $${item.price}`;
-        cartItemsContainer.appendChild(itemElement);
-    });
-
     
-    updateCartCount();
-}
+    });
 
     </script>
 </body>
