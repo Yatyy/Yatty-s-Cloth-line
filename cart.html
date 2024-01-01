@@ -114,13 +114,13 @@ footer {
     <script>
         let cartItems = [];
 
-        // Function to add items to the cart
+       
         function addToCart(name, price) {
             cartItems.push({ name, price });
             updateCartDisplay();
         }
 
-        // Display cart items dynamically
+       
         function updateCartDisplay() {
             const cartItemsContainer = document.getElementById('cartItems');
             cartItemsContainer.innerHTML = '';
@@ -131,36 +131,45 @@ footer {
                 cartItemsContainer.appendChild(itemElement);
             });
 
-            // Update the cart count in the header
+           
             updateCartCount();
         }
 
-        // Update the cart count in the header
+        
         function updateCartCount() {
             const cartCountElement = document.querySelector('.cart-count');
             cartCountElement.textContent = cartItems.length;
         }
 
-        // Handle the checkout process
+        
         function handleCheckout(event) {
             event.preventDefault();
 
-            // Retrieve customer details from the form
             const customerName = document.getElementById('customerName').value;
             const customerAddress = document.getElementById('customerAddress').value;
             const paymentMode = document.getElementById('paymentMode').value;
 
-            // Display customer details
             alert('Thank you');
 
-            // Additional logic for processing the checkout can be added here
-
-            // You can redirect to a thank you page or handle the next steps of the checkout process
-
-            // Clear the cart after successful checkout
             cartItems = [];
             updateCartDisplay();
         }
+
+        // Display cart items dynamically
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    cartItemsContainer.innerHTML = '';
+
+    cartItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `<span>${item.name}</span> - $${item.price}`;
+        cartItemsContainer.appendChild(itemElement);
+    });
+
+    
+    updateCartCount();
+}
+
     </script>
 </body>
 
