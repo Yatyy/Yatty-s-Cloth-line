@@ -119,112 +119,93 @@
         <script>
             var cart = [];
 
-            function showSizePrompt(productName, price) {
-                var size = prompt('Please enter your size for ' + productName + ':', '');
-                if (size !== null && size !== '') {
-                    addToCart(productName + ' - Size ' + size, price, size);
-                }
-            }
+    function showSizePrompt(productName, price) {
+        var size = prompt('Please enter your size for ' + productName + ':', '');
+        if (size !== null && size !== '') {
+            addToCart(productName + ' - Size ' + size, price, size);
+        }
+    }
 
-            function addToCart(productName, price, size) {
-                var item = { productName, price, size };
-                cart.push(item);
-                updateCartCount();
-                updateCartUI();
-                alert('Added to cart: ' + productName + ' - ' + price);
-            }
+    function addToCart(productName, price, size) {
+        var item = { productName, price, size };
+        cart.push(item);
+        updateCartCount();
+        updateCartUI();
+        saveCartToLocalStorage();
+        alert('Added to cart: ' + productName + ' - ' + price);
+    }
 
-            function updateCartCount() {
-                var cartCountElement = document.querySelector('.cart-count');
-                cartCountElement.textContent = cart.length;
-            }
+    function updateCartCount() {
+        var cartCountElement = document.querySelector('.cart-count');
+        cartCountElement.textContent = cart.length;
+    }
 
-            function updateCartUI() {
-                var cartItemsContainer = document.getElementById('cartItems');
-                cartItemsContainer.innerHTML = '';
+    function updateCartUI() {
+        var cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = '';
 
-                cart.forEach(function (item) {
-                    var listItem = document.createElement('li');
-                    listItem.textContent = `${item.productName} - ${item.price}`;
-                    cartItemsContainer.appendChild(listItem);
-                });
-            }
+        cart.forEach(function (item) {
+            var listItem = document.createElement('li');
+            listItem.textContent = `${item.productName} - ${item.price}`;
+            cartItemsContainer.appendChild(listItem);
+        });
+    }
 
-            function openShoppingCart() {
-                var shoppingCart = document.getElementById('shoppingCart');
-                shoppingCart.style.display = 'block';
-                updateCartUI();
-            }
+    function openShoppingCart() {
+        var shoppingCart = document.getElementById('shoppingCart');
+        shoppingCart.style.display = 'block';
+        updateCartUI();
+    }
 
-            function closeShoppingCart() {
-                var shoppingCart = document.getElementById('shoppingCart');
-                shoppingCart.style.display = 'none';
-            }
+    function closeShoppingCart() {
+        var shoppingCart = document.getElementById('shoppingCart');
+        shoppingCart.style.display = 'none';
+    }
 
-            function redirectToCheckout() {
-                window.location.href = 'cart.html';
-            }
+    function redirectToCheckout() {
+        window.location.href = 'cart.html';
+    }
 
-            function handleCheckout() {
-                window.location.href = 'cart.html';
-            }
+    function handleCheckout() {
+        window.location.href = 'cart.html';
+    }
 
-            var cartIcon = document.getElementById('cartIcon');
-            cartIcon.addEventListener('click', function () {
-                openShoppingCart();
-            });
+    function openCheckout() {
+        var checkoutDetails = document.getElementById('checkoutDetails');
+        checkoutDetails.style.display = 'block';
+        updateCartUI();
+    }
 
-            function openCheckout() {
-                var checkoutDetails = document.getElementById('checkoutDetails');
-                checkoutDetails.style.display = 'block';
-                updateCartUI();
-            }
+    function closeCheckout() {
+        var checkoutDetails = document.getElementById('checkoutDetails');
+        checkoutDetails.style.display = 'none';
+    }
 
-            function closeCheckout() {
-                var checkoutDetails = document.getElementById('checkoutDetails');
-                checkoutDetails.style.display = 'none';
-            }
+    function processCheckout() {
+        alert('Checkout processed successfully!');
+        cart = [];
+        updateCartCount();
+        updateCartUI();
+        closeCheckout();
+    }
 
-            function processCheckout() {
-             
-                alert('Checkout processed successfully!');
-                
-                cart = [];
-                updateCartCount();
-                updateCartUI();
-                closeCheckout();
-            }
+    function saveCartToLocalStorage() {
+        localStorage.setItem('cartItems', JSON.stringify(cart));
+    }
 
-            
-function updateCartDisplay() {
-    const cartItemsContainer = document.getElementById('cartItems');
-    cartItemsContainer.innerHTML = '';
+    function loadCartFromLocalStorage() {
+        var storedCart = localStorage.getItem('cartItems');
+        if (storedCart) {
+            cart = JSON.parse(storedCart);
+            updateCartCount();
+            updateCartUI();
+        }
+    }
 
-    cartItems.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.innerHTML = `<span>${item.name}</span> - $${item.price}`;
-        cartItemsContainer.appendChild(itemElement);
+   
+    window.addEventListener('DOMContentLoaded', function () {
+        loadCartFromLocalStorage();
     });
-
-    let cartItems = [];
-
-        function addToCart(name, price) {
-            cartItems.push({ name, price });
-            updateCartDisplay();
-            saveCartToLocalStorage();
-        }
-
-        function updateCartDisplay() {
-
-        }
-
-        function saveCartToLocalStorage() {
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        }
-  
-    updateCartCount();
-}
-
         </script>
     </div>
 </body>
