@@ -100,7 +100,7 @@
             <h2>LIMITED TIME ONLY!</h2>
             <p>₱999.99</p>
         </div>
-     <button onclick="redirectToCheckout()">Checkout</button>
+     <button onclick="OpenCheckout()">Checkout</button>
     </main>
     <footer>
         <p>&copy; 2023 Yatty's Clothing Line. All rights reserved.</p>
@@ -110,10 +110,11 @@
         </ul>
     </footer>
  <div id="shoppingCart">
+        <div id="checkoutDetails" style="display: none;">
         <h2>Your Shopping Cart</h2>
         <ul id="cartItems"></ul>
         <button onclick="closeShoppingCart()">Cancel</button>
-        <button onclick="redirectTocheckout()">Checkout</button>
+        <button onclick="processCheckout()">Process Checkout</button>
     </div>
 
     <script>
@@ -175,6 +176,28 @@
         var cartIcon = document.getElementById('cartIcon');
         cartIcon.addEventListener('click', function () {
             openShoppingCart();
+
+    function openCheckout() {
+            var checkoutDetails = document.getElementById('checkoutDetails');
+            checkoutDetails.style.display = 'block';
+            updateCartUI();
+        }
+
+        function closeCheckout() {
+            var checkoutDetails = document.getElementById('checkoutDetails');
+            checkoutDetails.style.display = 'none';
+        }
+
+        function processCheckout() {
+            // Add logic to handle the checkout process
+            alert('Checkout processed successfully!');
+            // Reset the cart after processing
+            cart = [];
+            updateCartCount();
+            updateCartUI();
+            closeCheckout();
+        }
+    
         });
     </script>
 </body>
