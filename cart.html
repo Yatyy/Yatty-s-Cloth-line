@@ -79,7 +79,7 @@
         </div>
     </main>
 
-    <section id="customerDetails">
+   <section id="customerDetails">
         <h2>Customer Details</h2>
         <form id="checkoutForm" onsubmit="handleCheckout(event)">
             <label for="customerName">Name:</label>
@@ -93,17 +93,22 @@
             <label for="emailAddress">Email:</label>
             <input type="text" id="emailAddress" name="emailAddress" required>
             <div></div>
-            
+
             <label for="paymentMode">Payment Mode:</label>
-            <select id="paymentMode" name="paymentMode" required>
+            <select id="paymentMode" name="paymentMode" onchange="handlePaymentModeChange()" required>
                 <option value="creditCard">Credit Card</option>
                 <option value="debitCard">Debit Card</option>
                 <option value="paypal">PayPal</option>
             </select>
+
+            <!-- Container for payment details -->
+            <div id="paymentDetailsContainer"></div>
+
             <button type="submit">Proceed to Payment</button>
             <div></div>
         </form>
     </section>
+
 
     <footer>
         <p>&copy; 2023 Yatty's Clothing Line. All rights reserved.</p>
@@ -140,7 +145,7 @@
                 cartItemsContainer.appendChild(itemElement);
             });
 
-            // Update cart items in the checkout section
+            
             const cartItemsCheckoutContainer = document.getElementById('cartItemsCheckout');
             cartItemsCheckoutContainer.innerHTML = '';
 
@@ -190,6 +195,50 @@
 
         function saveCartToLocalStorage() {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+         function handlePaymentModeChange() {
+            const paymentMode = document.getElementById('paymentMode').value;
+            const paymentDetailsContainer = document.getElementById('paymentDetailsContainer');
+
+            // Clear previous payment details
+            paymentDetailsContainer.innerHTML = '';
+
+            // Add new payment details based on the selected payment mode
+            if (paymentMode === 'creditCard') {
+                // Add credit card details fields
+                paymentDetailsContainer.innerHTML = `
+                    <label for="creditCardNumber">Credit Card Number:</label>
+                    <input type="text" id="creditCardNumber" name="creditCardNumber" required>
+                    <div></div>
+                    <label for="creditCardExpiry">Expiry Date:</label>
+                    <input type="text" id="creditCardExpiry" name="creditCardExpiry" placeholder="MM/YY" required>
+                    <div></div>
+                    <label for="creditCardCVV">CVV:</label>
+                    <input type="text" id="creditCardCVV" name="creditCardCVV" required>
+                    <div></div>
+                `;
+            } else if (paymentMode === 'debitCard') {
+                // Add debit card details fields
+                paymentDetailsContainer.innerHTML = `
+                    <label for="debitCardNumber">Debit Card Number:</label>
+                    <input type="text" id="debitCardNumber" name="debitCardNumber" required>
+                    <div></div>
+                    <label for="debitCardExpiry">Expiry Date:</label>
+                    <input type="text" id="debitCardExpiry" name="debitCardExpiry" placeholder="MM/YY" required>
+                    <div></div>
+                    <label for="debitCardCVV">CVV:</label>
+                    <input type="text" id="debitCardCVV" name="debitCardCVV" required>
+                    <div></div>
+                `;
+            } else if (paymentMode === 'paypal') {
+                // Add PayPal details fields
+                paymentDetailsContainer.innerHTML = `
+                    <label for="paypalEmail">PayPal Email:</label>
+                    <input type="email" id="paypalEmail" name="paypalEmail" required>
+                    <div></div>
+                `;
+            }
         }
     </script>
 </body>
