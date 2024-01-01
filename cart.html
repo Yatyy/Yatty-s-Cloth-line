@@ -55,7 +55,7 @@
     <script>
         let cartItems = [];
 
-        // Assume this function is called to add items to the cart
+        // Function to add items to the cart
         function addToCart(name, price) {
             cartItems.push({ name, price });
             updateCartDisplay();
@@ -71,8 +71,18 @@
                 itemElement.textContent = `${item.name} - $${item.price}`;
                 cartItemsContainer.appendChild(itemElement);
             });
+
+            // Update the cart count in the header
+            updateCartCount();
         }
 
+        // Update the cart count in the header
+        function updateCartCount() {
+            const cartCountElement = document.querySelector('.cart-count');
+            cartCountElement.textContent = cartItems.length;
+        }
+
+        // Handle the checkout process
         function handleCheckout(event) {
             event.preventDefault();
 
@@ -81,15 +91,19 @@
             const customerAddress = document.getElementById('customerAddress').value;
             const paymentMode = document.getElementById('paymentMode').value;
 
-            // You can use the retrieved details for further processing or send them to a server
-            // For now, let's display an alert with the information
+            // Display customer details
             alert(`Customer Name: ${customerName}\nAddress: ${customerAddress}\nPayment Mode: ${paymentMode}`);
 
+            // Additional logic for processing the checkout can be added here
+
             // You can redirect to a thank you page or handle the next steps of the checkout process
+
+            // Clear the cart after successful checkout
+            cartItems = [];
+            updateCartDisplay();
         }
     </script>
 </body>
 
 </html>
-
 
