@@ -165,6 +165,41 @@
         var cartIcon = document.getElementById('cartIcon');
         cartIcon.addEventListener('click', function () {
             openShoppingCart();
+
+        }
+         function redirectToCheckout() {
+                window.location.href = 'cart.html';
+            }
+
+            function handleCheckout() {
+                window.location.href = 'cart.html';
+            }
+
+            var cartIcon = document.getElementById('cartIcon');
+            cartIcon.addEventListener('click', function () {
+                openShoppingCart();
+            });
+
+            function openCheckout() {
+                var checkoutDetails = document.getElementById('checkoutDetails');
+                checkoutDetails.style.display = 'block';
+                updateCartUI();
+            }
+
+            function closeCheckout() {
+                var checkoutDetails = document.getElementById('checkoutDetails');
+                checkoutDetails.style.display = 'none';
+            }
+
+            function processCheckout() {
+                // Add logic to handle the checkout process
+                alert('Checkout processed successfully!');
+                // Reset the cart after processing
+                cart = [];
+                updateCartCount();
+                updateCartUI();
+                closeCheckout();
+            }                         
         });
     </script>
 </body>
