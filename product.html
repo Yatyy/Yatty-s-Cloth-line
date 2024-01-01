@@ -194,6 +194,22 @@
                 updateCartUI();
                 closeCheckout();
             }
+
+            // Display cart items dynamically
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    cartItemsContainer.innerHTML = '';
+
+    cartItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `<span>${item.name}</span> - $${item.price}`;
+        cartItemsContainer.appendChild(itemElement);
+    });
+
+  
+    updateCartCount();
+}
+
         </script>
     </div>
 </body>
