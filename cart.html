@@ -30,7 +30,33 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        
         }
+
+        body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set a minimum height of 100% of the viewport height */
+    background-image: url('https://twooctobers.com/wp-content/uploads/2018/06/Clothing-Retailer-Store.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+main {
+    flex: 1; /* Make the main element grow to fill the remaining space */
+}
+
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+    background-color: #333; /* Add a background color to the footer */
+    color: #fff; /* Set text color for the footer */
+    padding: 10px;
+    text-align: center;
+}
     </style>
     <title>Yatty's Clothing Line - Cart</title>
 </head>
